@@ -11,10 +11,9 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
   const [hasError, setHasError] = React.useState(false);
   const [isLoaded, setIsLoaded] = React.useState(false);
 
-  // Video source - prioritize local file
+  // Use external hosted video from Supabase
   const videoSources = [
-    // Primary: Local file (works in development and production with proper deployment)
-    '/BGVideo1.mp4'
+    'https://ijlbokgohzayvvynagcs.supabase.co/storage/v1/object/public/mcp/BGVideo1%20(1).mp4'
   ];
 
   React.useEffect(() => {
@@ -57,7 +56,6 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
     setHasError(true);
   };
 
-  // If video fails to load, show nothing (let parent handle background)
   if (hasError) {
     console.log('🎥 VideoBackground: Video failed to load');
     return null;
